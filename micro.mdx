@@ -1,4 +1,4 @@
-import { Appear } from 'mdx-deck'
+import { Notes, Appear } from 'mdx-deck'
 
 # Micro-componentization of React app
 
@@ -10,7 +10,31 @@ _"Micro-frontend"_
 
 ---
 
+## What?
+
+React introduced a concept called Component-Based-Architecture, a method for encapsulating individual pieces of a larger user interface (aka components) into self-sustaining, independent micro-systems
+
+---
+
+### Component
+
+You can think of a component as a small feature that makes up a piece of the user interface.
+
+<Notes>
+
+- If I were to describe a component within the scope of Facebook’s UI, A chat window would be a component, a comment feed would be another component, and a constantly updating friend list would represent yet another component.
+- Each of these components exist within the same space, yet interact independently from one another. 
+- Components have their own structure, their own methods and their own APIs. 
+- Components are also reusable and can be “pasted” into interfaces at will. 
+- The independent nature of components allows for developers to create a UI with many different moving parts.
+
+</Notes>
+
+---
+
 ## Why?
+
+Components are independent
 
 ---
 
@@ -23,3 +47,9 @@ _"Micro-frontend"_
 ## Three
 
 </Appear>
+
+---
+
+## References
+
+https://medium.com/@dan.shapiro1210/understanding-component-based-architecture-3ff48ec0c238
