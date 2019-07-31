@@ -1,4 +1,6 @@
-import { Notes, Appear } from 'mdx-deck'
+import { Notes, Appear, Split, themes } from 'mdx-deck'
+
+export const theme = themes.yellow
 
 # Micro-componentization of React app
 
@@ -10,22 +12,30 @@ _"Micro-frontend"_
 
 ---
 
+<Split>
+
 ## What?
 
 React introduced a concept called Component-Based-Architecture, a method for encapsulating individual pieces of a larger user interface (aka components) into self-sustaining, independent micro-systems
 
+</Split>
+
 ---
+
+<Split>
 
 ### Component
 
 You can think of a component as a small feature that makes up a piece of the user interface.
 
+</Split>
+
 <Notes>
 
 - If I were to describe a component within the scope of Facebook’s UI, A chat window would be a component, a comment feed would be another component, and a constantly updating friend list would represent yet another component.
-- Each of these components exist within the same space, yet interact independently from one another. 
-- Components have their own structure, their own methods and their own APIs. 
-- Components are also reusable and can be “pasted” into interfaces at will. 
+- Each of these components exist within the same space, yet interact independently from one another.
+- Components have their own structure, their own methods and their own APIs.
+- Components are also reusable and can be “pasted” into interfaces at will.
 - The independent nature of components allows for developers to create a UI with many different moving parts.
 
 </Notes>
@@ -34,7 +44,89 @@ You can think of a component as a small feature that makes up a piece of the use
 
 ## Why?
 
-Components are independent
+---
+
+### Components are independent
+
+<Notes>
+
+- Components build off of the concept of AJAX requests, in which calls to the server are made directly from the client-side
+- allowing for the DOM to be dynamically updated without the need of a page refresh
+- each have their own interfaces that can make calls to the server and update their interfaces
+- one component can refresh without affecting other components or the UI as a whole
+
+</Notes>
+
+---
+
+### Components can improve performance
+
+<Notes>
+
+- React.js handles components in an extremely performant way.
+- React.js uses something called a virtual DOM which uses a “diffing” algorithm to detect changes to a component and only render those changes, as opposed to re-rendering the entire component.
+
+</Notes>
+
+---
+
+### Component is comprised of a JavaScript class
+
+<Notes>
+
+- requires that all methods and APIs pertaining to a single component exist within that component’s structure.
+- Whereas MVC separates structure, helper methods, and routing into different levels of the application, components contain all of those features within a single class
+- Developers don’t have to spend much time trying to find which functions pertain to which parts of an application’s UI.
+- I personally prefer to structure files based on it category (routes, container, component, redux) with their name inherit from the functionality or module.
+
+</Notes>
+
+---
+
+### Components are reusable
+
+<Notes>
+
+- major selling point for applications that reuse features, but still want different copies of those features to act independently.
+
+</Notes>
+
+---
+
+> _"We’re not designing pages, we’re designing systems of components."_
+
+-- Stephen Hay
+
+<Notes>
+
+- For the most part, we're working with web pages and screens in mobile app.
+- We might see it as working on a whole page but we might not realize that consciously, we're working with a numbers of component.
+- We are working on this atomic component, that build into a larger and complex component.
+
+</Notes>
+
+---
+
+> _"Similarly, interfaces are made up of smaller components. This means we can break entire interfaces down into fundamental building blocks and work up from there. That’s the basic gist of atomic design."_
+
+-- Brad Frost
+
+<Notes>
+
+- Brad in his article, coin the terms "Atomic Design", which discuss on the matter of breaking your design, page or screen into atomic representation.
+
+</Notes>
+
+---
+
+Atoms > Molecules > Organisms > Templates > Pages
+
+<Notes>
+
+- The atomic design are breaks into 5 elements, which in the represent the whole webpage.
+- This levels are crucial in that it would help developers and designers to achieve a much more comprehensive design-system with a well defined purpose.
+
+</Notes>
 
 ---
 
@@ -52,4 +144,10 @@ Components are independent
 
 ## References
 
+http://bradfrost.com/blog/post/atomic-web-design/
+
 https://medium.com/@dan.shapiro1210/understanding-component-based-architecture-3ff48ec0c238
+
+https://varun.ca/styled-system/
+
+https://jxnblk.com/blog/defining-component-apis-in-react/
