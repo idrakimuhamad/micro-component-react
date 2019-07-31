@@ -1,0 +1,17 @@
+{
+  "name": "micro-component-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "mdx-deck micro.mdx",
+    "build": "mdx-deck build micro.mdx",
+    "help": "mdx-deck",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mdx-deck": "^3.0.8"
+  }
+}
