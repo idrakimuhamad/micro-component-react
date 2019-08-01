@@ -6,6 +6,7 @@
   "scripts": {
     "start": "mdx-deck micro.mdx",
     "build": "mdx-deck build micro.mdx",
+    "start:coder": "mdx-deck micro.mdx --host=0.0.0.0",
     "help": "mdx-deck",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
