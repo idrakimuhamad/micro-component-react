@@ -70,7 +70,7 @@ You can think of a component as a small feature that makes up a piece of the use
 
 ---
 
-### Component is comprised of a JavaScript class
+### Component is comprised of a JS class 
 
 <Notes>
 
@@ -132,13 +132,94 @@ Atoms > Molecules > Organisms > Templates > Pages
 
 ## How?
 
-<Appear>
+<Notes>
 
-## Two
+- In designing components' and its API, there're a numbers of things that need to be consider, and pattern that can be adopt.
 
-## Three
+</Notes>
 
-</Appear>
+---
+
+### Aim for a small API surface area
+
+React library itself aims for a Minimal API Surface Area
+
+<Notes>
+
+- The fewer new things you need to learn, the easier it is for others to know how to use the components that you create, making them more reusable.
+- If someone doesn’t understand your component API, the chance that they’ll duplicate your work increases. 
+- This idea should be the core of how you should approach creating components, and you will find it helpful to keep in mind as you work.
+
+</Notes>
+
+---
+
+### Make it easy to find
+
+<Notes>
+
+- Start with a flat directory structure and don’t prematurely organize your code base. 
+- Humans love to organize things, but we’re also really terrible at it. 
+- Naming things is hard enough, and by creating a directory structure around your component library, you might end up doing more work that makes it more difficult for others to find the things you’ve done.
+- A single directory of components can get quite large before it becomes difficult for people to manage. 
+- And if all the components are in a single folder, you’ll get alphabetical ordering for free in most file-system tools, which can help provide a more complete picture of the code base for others.
+
+</Notes>
+
+---
+
+### Avoid `render*` function
+
+>_"[It] effectively means there’s enough complexity to be worth breaking down"_
+
+-- Chris Biscardi
+<Notes>
+
+- If you’ve defined a custom method in your component that starts with the word render, chances are that should be its own component. 
+- React’s smart about when to render or not render a component, so by splitting these out into their own components, you can help React do its job better.
+
+</Notes>
+
+---
+
+#### Don't
+
+```jsx
+class List extends Component {
+  
+  renderItem = (items) => items.map(item => <li key={item.id}>{item.label}</li>)
+
+  render() {
+    return (<ul>
+      {this.renderItem(this.props.items)}
+    </ul>)
+  }
+}
+```
+
+---
+
+#### Do
+
+```jsx
+const Item = item => (<li>{item}</li>)
+const Items = items => items.map(item => <Item key={item.id} item={item.label} />)
+
+class List extends Component {
+  render() {
+    return (
+      <ul><Items items={this.props.items} /></ul>
+    )
+  }
+}
+```
+
+<Notes>
+
+- Let say, we need a way to track on the selected item.
+- This way, you can extend the items component to hold its own state of selected item, so that when that state change the Items will rerender, but not the whole List component.
+
+</Notes>
 
 ---
 
@@ -151,3 +232,6 @@ https://medium.com/@dan.shapiro1210/understanding-component-based-architecture-3
 https://varun.ca/styled-system/
 
 https://jxnblk.com/blog/defining-component-apis-in-react/
+
+
+
